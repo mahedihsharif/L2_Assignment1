@@ -25,16 +25,16 @@ Here is an example:
 You can also make union or intersection using type.
 
 Union Example:
-`type Status = "success" | "error" | "loading";
+`type Status = "success" | "error" | "loading"`;
 
-function showStatus(status: Status) {
+`function showStatus(status: Status) {
   console.log("Current status:", status);
-}
+}`
 
-showStatus("success");
+`showStatus("success");
 showStatus("error"); 
-showStatus("loading");  
-`
+showStatus("loading")`;  
+
  Here we pass any Status value inside the function that is true and return true but if we pass any false or wrong value inside the function it returns false.
 
 Intersection Example:
@@ -46,20 +46,19 @@ Here is an example:
 `type User = {
   name: string;
   email: string;
-};
+}`;
 
-type Admin = {
+`type Admin = {
   role: string;
-};
+}`;
 
-type AdminUser = User & Admin;
+`type AdminUser = User & Admin`;
 
-const admin1: AdminUser = {
+`const admin1: AdminUser = {
   name: "Mahedi",
   email: "mahedi@example.com",
   role: "superadmin"
-};
-`
+}`;
 Here, AdminUser is a combination of User & Admin.
 
 
@@ -81,9 +80,9 @@ Example:
 `interface Animal {
   name: string;
   makeSound(): void;
-}
+}`
 
-class Dog implements Animal {
+`class Dog implements Animal {
   name = "Tommy";
   makeSound() {
     console.log("ghew ghew");
@@ -94,14 +93,14 @@ class Dog implements Animal {
 Type: when we will make union type, primitive type or tuple type we will use type.
 
 Example:
-`type Status = "success" | "error" | "loading";
+`type Status = "success" | "error" | "loading"`;
 
-type Point = [number, number];
+`type Point = [number, number]`;
 
-type res= 
+`type res= 
   | { status: "success"; data: string }
-  | { status: "error"; message: string };
-`
+  | { status: "error"; message: string }`;
+
 
 
 We can use interface and type together 
@@ -109,9 +108,9 @@ Here is an example:
 `
 interface Person {
   name: string;
-}
+}`
 
-type Developer = Person & {
+`type Developer = Person & {
   skills: string[];
 };
 `
@@ -131,9 +130,9 @@ type Person = {
   name: string;
   age: number;
   email: string;
-};
+}`;
 
-type PersonKeys = keyof Person; 
+`type PersonKeys = keyof Person; 
 //"name" | "age" | "email"
 `
 Here PersonKeys type will be "name" | "age" | "email" that means Person type all keys are union in PersonKeys.
@@ -148,28 +147,28 @@ Any type: any means anything it totally stops the checking of typescript types w
 
 Here a given example:
 `
-let value: any;
+let value: any`;
 
-value = 10;
+`value = 10;
 value = "Hello";
-value = true;
+value = true`;
 
 This value will assign without type checking
-value.toUpperCase(); // if it give wrong answer it never check type
+`value.toUpperCase(); // if it give wrong answer it never check type
 `
 
 Unknown types store any type of value but you can’t use its value directly until you check the type. It's better for type safety than any type.
 
 Here an example: 
 `
-let value: unknown;
+let value: unknown`;
 
-value = 10;
-value = "Hello";
+`value = 10;
+value = "Hello"`;
 
 value.toUpperCase(); //you can use this way it will give you an error.
 
-if (typeof value === "string") {
+`if (typeof value === "string") {
   console.log(value.toUpperCase());}
 `
 
@@ -182,9 +181,9 @@ Here given an example:
 `
 function throwError(message: string): never {
   throw new Error(message);
-}
+}`
 
-function infiniteLoop(): never {
+`function infiniteLoop(): never {
   while (true) {}
 }
 `
