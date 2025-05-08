@@ -117,3 +117,76 @@ type Developer = Person & {
 
 
 Final Explanation:  In TypeScript Interface and Type are very powerful if i use structure or shape of an object and probably it needs to extend that time i will use interface. And if i use type mapping, union or tuple i can use type.
+
+
+
+2. What is the use of the keyof keyword in TypeScript? Provide an example.
+
+Keyof is a utility keyword of TypeScript which is used to make an union of all keys of an object type. It is very useful for generic programming and type safe code.
+keyof takes an object type and returns a union of its keys as string literals.
+
+Here given an example:
+
+type Person = {
+  name: string;
+  age: number;
+  email: string;
+};
+
+type PersonKeys = keyof Person; 
+//"name" | "age" | "email"
+
+Here PersonKeys type will be "name" | "age" | "email" that means Person type all keys are union in PersonKeys.
+
+
+
+3. Explain the difference between any, unknown, and never types in TypeScript.
+
+In TypeScript any, unknown and never types are very important and every type is used in different cases. I am explaining every type with a proper example below.
+
+Any type: any means anything it totally stops the checking of typescript types when you don’t know about the variable type you can use any type. If you use any type you never type safely. So it’s good to avoid any type if possible.
+
+Here a given example:
+
+let value: any;
+
+value = 10;
+value = "Hello";
+value = true;
+
+This value will assign without type checking
+value.toUpperCase(); // if it give wrong answer it never check type
+
+
+Unknown types store any type of value but you can’t use its value directly until you check the type. It's better for type safety than any type.
+
+Here an example: 
+
+let value: unknown;
+
+value = 10;
+value = "Hello";
+
+value.toUpperCase(); //you can use this way it will give you an error.
+
+if (typeof value === "string") {
+  console.log(value.toUpperCase());}
+
+
+When you don’t know your type but if you want to save your type you can use unknown.
+
+
+Never: never type means this type of value that never happened. It is used for that function that never returns any value.
+
+Here given an example:
+
+function throwError(message: string): never {
+  throw new Error(message);
+}
+
+function infiniteLoop(): never {
+  while (true) {}
+}
+
+Never use tite type checking and exhaustiveness-check specially in switch-case or type guard.
+
